@@ -1,0 +1,22 @@
+.authForm {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 400px;
+    margin: 10vw auto;
+}
+
+.authIntro {
+    text-align: center;
+    font-size: 20px;
+    text-decoration: line-through;
+    margin-bottom: 20px;
+}
+
+.authInput {
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 20px;
+}
