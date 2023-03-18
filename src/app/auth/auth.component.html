@@ -1,6 +1,12 @@
-<form class="authForm">
+<form [formGroup]="authForm" (submit)="onSubmitHandler()" class="authForm">
+    {{errors }}
     <div class="authIntro">{{intro}}</div>
-    {{username}}<input class="authInput" type="text" name="username" id="username" value="" />
-    {{password}}<input class="authInput" type="password" name="password" id="password" value="" />
-    <button (click)="onSubmitHandler()">Submit</button>
+
+    <label for="email">{{email}}</label>
+    <input id="email" type="text" formControlName="email" class="authInput" />
+
+    <label for="password">{{password}}</label>
+    <input id="password" type="text" formControlName="password" class="authInput" />
+
+    <button type="submit">Submit</button>
 </form>
