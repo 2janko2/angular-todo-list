@@ -21,4 +21,4 @@ import { AuthComponent } from './auth.component';
     providers: [],
 })
 
-export class AuthModule { }
+export class AuthModule {}

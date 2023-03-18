@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApiService } from './services/api.service';
 import { UserService } from './services/user.service';
+import { LoaderService } from './services/loader.service';
 
 @NgModule({
     declarations: [],
@@ -11,6 +12,6 @@ import { UserService } from './services/user.service';
         BrowserModule,
         HttpClientModule
     ],
-    providers: [ApiService, HttpClient, UserService],
+    providers: [ApiService, HttpClient, UserService, LoaderService],
 })
 export class CoreModule { }
