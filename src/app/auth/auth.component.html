@@ -1,6 +1,7 @@
 <mat-slide-toggle>Toggle me!</mat-slide-toggle>
-<app-loader></app-loader>
-<form [formGroup]="authForm" (submit)="onSubmitHandler()" class="authForm">
+<!-- <app-loader *ngIf="isLoading">!!!!!!!!!!</app-loader> -->
+<mat-spinner></mat-spinner>
+<form [formGroup]="authForm" (ngSubmit)="onSubmitHandler()" class="authForm">
     {{errors }}
     <div class="authIntro">{{intro}}</div>
 

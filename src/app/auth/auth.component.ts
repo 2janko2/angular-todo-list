@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { LoaderService } from '../core/services/loader.service';
 
 import { UserService } from '../core/services/user.service';
 
@@ -14,32 +15,30 @@ export class AuthComponent {
   intro = "Dear Applicant please type your credentials in the appropriate fields. Or contact the support desk"
   email = "Username:"
   password = "Password:"
+  isLoading = false;
   errors = [];
   authForm: FormGroup;
 
-  constructor(private userService: UserService, private fb: FormBuilder) { 
+  constructor(
+    private userService: UserService,
+    private fb: FormBuilder,
+    private loaderService: LoaderService
+  ) {
     this.authForm = this.fb.group({
-      email: [''],
-      password: [''],
+      email: ['', Validators.email],
+      password: ['', Validators.pattern(
+        /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/
+      )],
     });
   }
 
   onSubmitHandler() {
+    this.isLoading = true;
+    this.loaderService.setLoading(true);
     debugger;
     const credentials = this.authForm.value;
-    debugger;
-
-    // event.preventDefault()
-    this.userService.auth('/api/todos', credentials)
-      .subscribe({
-        next: (data) => {
-          debugger;
-          console.log(data);
-        },
-        error: (data) => {
-          debugger;
-          this.errors = data;
-        }
-      })
+    this.userService.createSession('/api/todos', credentials, this.errors);
+    this.loaderService.setLoading(false);
+    this.isLoading = false;
   }
 }

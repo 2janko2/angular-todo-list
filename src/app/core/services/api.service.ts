@@ -1,23 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment.development';
 
+import { Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
     providedIn: 'any'
 })
-export class ApiService {
-    private formatErrors(error: any) {
-        return throwError(error.error);
-    }
 
+export class ApiService {
     constructor(private http: HttpClient) { }
 
-    post(route: any, params: any): Observable<any> {
-        return this.http.post<any>(`${environment.baseUrl}/auth/login`,
-            { email: 'ivan.khlysta@gmail.com', password: '1044' })
+    get(uriParam: string): Observable<any> {
+        return this.http.get<any>(`${environment.baseUrl}${uriParam}`).pipe(
+            map((resp: any) => {
+                return resp;
+            }),
+            catchError((error: any) => {
+                return error;
+            })
+        )
+    }
+
+    post(endpoint: any, credentials: any): Observable<any> {
+        return this.http.post<any>(
+            `${environment.baseUrl}${environment.login}`,
+            { email: endpoint, password: credentials }
+        )
             .pipe(
                 tap((n: any) => {
                     console.log(n);
