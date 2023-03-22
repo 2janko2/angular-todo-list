@@ -1,4 +1,4 @@
-<div *ngIf="this.loader.getLoading()">
+<ng-container *ngIf="isLoading">
     <div class="container">
         <div class="row">
             <div id="loader">
@@ -14,4 +14,4 @@
             </div>
         </div>
     </div>
-</div>
+</ng-container>

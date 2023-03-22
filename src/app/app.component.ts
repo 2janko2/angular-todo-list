@@ -20,10 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.setLoading(true);
-    debugger;
     this.userService.me(`${environment.me}`);
-    debugger;
     this.loaderService.setLoading(false);
-    debugger;
   }
 }

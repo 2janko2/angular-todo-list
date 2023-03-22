@@ -26,8 +26,7 @@ export class ApiService {
 
     post(endpoint: any, credentials: any): Observable<any> {
         return this.http.post<any>(
-            `${environment.baseUrl}${environment.login}`,
-            { email: endpoint, password: credentials }
+            `${environment.baseUrl}${environment.login}`, credentials
         )
             .pipe(
                 tap((n: any) => {
