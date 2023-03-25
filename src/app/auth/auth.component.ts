@@ -4,6 +4,7 @@ import { Validators } from '@angular/forms';
 import { LoaderService } from '../core/services/loader.service';
 
 import { UserService } from '../core/services/user.service';
+import {ResultCodesEnum} from "../core/models/result-codes.model";
 
 @Component({
   selector: 'app-auth',
@@ -15,8 +16,7 @@ export class AuthComponent {
   intro = "Dear Applicant please type your credentials in the appropriate fields. Or contact the support desk"
   email = "Username:"
   password = "Password:"
-  isLoading = false;
-  errors = [];
+  errors: any;
   authForm: FormGroup;
 
   constructor(
@@ -33,12 +33,25 @@ export class AuthComponent {
   }
 
   onSubmitHandler() {
-    this.isLoading = true;
-    this.loaderService.setLoading(true);
-    debugger;
-    const credentials = this.authForm.value;
-    this.userService.createSession('/api/todos', credentials, this.errors);
-    this.loaderService.setLoading(false);
-    this.isLoading = false;
+    try{
+      this.loaderService.setLoading(true);
+      this.userService.createSession('/api/login', this.authForm.value).subscribe({
+        next: (data)=> {
+          if(data.messages){
+            this.errors = data.messages[0];
+            this.userService.navigate(data);
+          }
+        },
+        error: (err)=>{
+          this.errors = err;
+          console.log(err)
+        }
+      })
+    } catch (e){
+      this.errors = e;
+    } finally {
+      this.loaderService.setLoading(false);
+    }
+
   }
 }

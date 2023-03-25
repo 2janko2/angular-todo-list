@@ -2,14 +2,13 @@
 <app-loader></app-loader>
 <!-- <mat-spinner></mat-spinner> -->
 <form [formGroup]="authForm" (ngSubmit)="onSubmitHandler()" class="authForm">
-    {{errors }}
-    <div class="authIntro">{{intro}}</div>
+  <div class="authIntro">{{intro}}</div>
+  {{errors}}
+  <label for="email">{{email}}</label>
+  <input id="email" type="text" formControlName="email" class="authInput"/>
 
-    <label for="email">{{email}}</label>
-    <input id="email" type="text" formControlName="email" class="authInput" />
+  <label for="password">{{password}}</label>
+  <input id="password" type="text" formControlName="password" class="authInput"/>
 
-    <label for="password">{{password}}</label>
-    <input id="password" type="text" formControlName="password" class="authInput" />
-
-    <button type="submit">Submit</button>
+  <button type="submit">Submit</button>
 </form>

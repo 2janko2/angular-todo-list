@@ -6,12 +6,7 @@ import { Injectable } from '@angular/core';
 
 export class JwtService {
     getJwt(tokenKey: string) {
-        const jwt = localStorage.getItem(tokenKey);
-        console.log(typeof jwt);
-        console.log(jwt);
-        debugger;
-        return jwt;
-
+        return localStorage.getItem(tokenKey);
     }
 
     setJwt(tokenKey: string, tokenValue: string) {

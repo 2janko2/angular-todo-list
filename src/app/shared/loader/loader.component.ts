@@ -16,7 +16,6 @@ export class LoaderComponent implements AfterViewInit, OnDestroy {
     ngAfterViewInit(): void {
         this.loadingSubscription = this.loader.loading$.subscribe({
             next: (status: any) => {
-                debugger;
                 this.isLoading = status;
                 this.changeDetection.detectChanges();
             }

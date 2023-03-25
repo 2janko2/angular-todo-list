@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -14,7 +13,7 @@ export class ApiService {
     constructor(private http: HttpClient) { }
 
     get(uriParam: string): Observable<any> {
-        return this.http.get<any>(`${environment.baseUrl}${uriParam}`).pipe(
+        return this.http.get<Observable<any>>(`${environment.baseUrl}${uriParam}`).pipe(
             map((resp: any) => {
                 return resp;
             }),
@@ -26,15 +25,11 @@ export class ApiService {
 
     post(endpoint: any, credentials: any): Observable<any> {
         return this.http.post<any>(
-            `${environment.baseUrl}${environment.login}`, credentials
+            `${environment.baseUrl}${endpoint}`, credentials
         )
             .pipe(
-                tap((n: any) => {
-                    console.log(n);
-                    debugger;
-                }),
+                tap((response: any) => response),
                 catchError((error) => {
-                    console.log(error);
                     return error;
                 })
             )

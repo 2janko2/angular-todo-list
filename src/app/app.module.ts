@@ -8,10 +8,12 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TodolistComponent } from './todolist/todolist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TodolistComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AuthModule,
     AppRoutingModule,
     AuthRoutingModule,
-    BrowserAnimationsModule 
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

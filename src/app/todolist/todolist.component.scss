@@ -1,0 +1,25 @@
+.todolist {
+  border: 1px gray solid;
+  padding: 20px;
+  background-color: #333333;
+  width: 200px;
+  align-items: center;
+  border-radius: 10px;
+
+  &__block {
+    padding-left: 16px;
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    color: snow;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  &__item {
+    list-style: none;
+    font-size: 16px;
+  }
+}
