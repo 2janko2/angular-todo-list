@@ -16,11 +16,9 @@ export class ApiService {
   get(uriParam: string): Observable<any> {
     return this.http.get<Observable<any>>(`${environment.baseUrl}${uriParam}`).pipe(
       map((resp: any) => {
-        debugger;
         return resp;
       }),
       catchError((error: any) => {
-        debugger;
         return error;
       })
     )

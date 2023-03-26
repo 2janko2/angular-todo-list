@@ -31,19 +31,13 @@ export class TodoComponent implements OnInit {
       map((data) => {
         data.map((item: any) => {
           const taskItems = this.apiService.get(`/todo-lists/${item.id}/tasks`).subscribe({
-            next: (data: Task) =>{
-              debugger;
+            next: (data: Task) => {
               this.tasks.push(...data.items)
             },
-            error: (data)=> {
-              debugger;
+            error: (data) => {
             }
           })
-          console.log(taskItems)
-          debugger;
         })
-        console.log(data)
-        debugger;
       })
     ).subscribe()
   }

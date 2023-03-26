@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodolistComponent } from './todolist/todolist.component';
 import { TodoComponent } from './todolist/todo/todo.component';
 import { TaskComponent } from './todolist/todo/task/task.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TaskComponent } from './todolist/todo/task/task.component';
     AuthModule,
     AppRoutingModule,
     AuthRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
