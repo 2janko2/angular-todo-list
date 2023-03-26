@@ -9,11 +9,15 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodolistComponent } from './todolist/todolist.component';
+import { TodoComponent } from './todolist/todo/todo.component';
+import { TaskComponent } from './todolist/todo/task/task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodolistComponent,
+    TodoComponent,
+    TaskComponent,
   ],
   imports: [
     BrowserModule,

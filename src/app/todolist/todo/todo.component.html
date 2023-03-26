@@ -1,0 +1,18 @@
+<ng-container>
+  <div class="todolist" *ngFor="let todo of todolists$ | async">
+    <h5 class="todolist__title">{{todo.title}}</h5>
+    <ng-container *ngFor="let task of tasks">
+      <ng-container *ngIf="todo.id === task.todoListId">
+        <ul class="todolist__block">
+          <input type="checkbox">
+          <ng-container>
+            <app-task [task]="task.title"></app-task>
+          </ng-container>
+        </ul>
+      </ng-container>
+
+    </ng-container>
+
+  </div>
+</ng-container>
+

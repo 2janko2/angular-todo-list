@@ -1,6 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../core/services/api.service";
-import {Observable, Subscription} from "rxjs";
+import {map, mergeMap} from "rxjs/operators";
+import {from} from "rxjs";
+
+interface Todolist {
+  addedDate: number,
+  id: string,
+  order: string,
+  title: string
+}
 
 @Component({
   selector: 'app-todolist',
@@ -9,11 +17,12 @@ import {Observable, Subscription} from "rxjs";
 })
 export class TodolistComponent implements OnInit {
   todolists$: any;
+  tasks$: any;
 
   constructor(private apiService: ApiService) {
   }
 
   ngOnInit() {
-    this.todolists$  = this.apiService.get('/todo-lists')
+    this.todolists$ = this.apiService.get('/todo-lists')
   }
 }
