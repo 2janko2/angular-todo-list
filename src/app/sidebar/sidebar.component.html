@@ -1,0 +1,18 @@
+<button nz-button nzType="primary" (click)="open()">Open</button>
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="visible"
+  [nzPlacement]="placement"
+  [nzCloseOnNavigation]="true"
+  nzTitle="Basic Drawer"
+  (nzOnClose)="close()"
+  [nzOffsetX]="200"
+  [nzKeyboard]="true"
+  [nzMask]="false"
+>
+  <ng-container *nzDrawerContent>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+  </ng-container>
+</nz-drawer>
